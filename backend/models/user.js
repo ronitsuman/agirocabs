@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema(
     phone: {
       type: String,
       required: [true, "Phone number is required"],
-      unique: true,
       match: [/^\d{10}$/, "Phone number must be 10 digits"],
     },
     password: {
@@ -28,6 +27,10 @@ const userSchema = new mongoose.Schema(
       enum: ["customer", "admin"],
       default: "customer",
     },
+    resetOTP: {type:String},
+    resetOTPExpiry:{type:Date}
+      
+    
   },
   {
     timestamps: true,
