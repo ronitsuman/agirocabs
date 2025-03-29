@@ -1,5 +1,4 @@
 import React from 'react'
-import Notification from '../components/NotificationBar'
 import NotificationBar from '../components/NotificationBar'
 
 const Home = () => {

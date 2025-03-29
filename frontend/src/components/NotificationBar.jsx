@@ -33,30 +33,35 @@ const NotificationBar = () => {
   },[])
 
   const handlefb = ()=>{
-    open('')
+    open('https://www.facebook.com/sharer/sharer.php?u=https://agirocabs.com/')
   }
   const handlelinkedin=()=>{
     open('https://www.linkedin.com/company/agirocabs/')
   }
   const handleinstagram = ()=>{
-    open('')
+    open('https://www.instagram.com/agirocabs/')
 
   }
   return (
+    //notification pannel start and scroll animation hide the bar 
     <motion.div
     initial={{y:0}}
     animate={{y:isVisible ? 0 : -100}}
     transition={{duration:0.5,ease:"easeInOut"}}
     className=' text-sm p-1  md:text-base flex items-center justify-between pl-4 pr-4 md:justify-between md:pl-4 md:pr-4 bg-black text-white md:p-2 will-change-scroll '>
+       {/* phone , mail,timing  */}
       <div className='md:flex md:items-center md:gap-4'>
       <p className='flex gap-2 items-center  '><IoCall className='text-green-500'/><a href="tel:+919006484700">+919006484700</a> </p>
       <p className='flex gap-2 items-center'><IoIosMail className='text-green-500' /><a href="mailto:support@agirocabs.com">support@agirocabs.com</a> </p>
-      <p className='flex gap-2 items-center'><CiClock2 className='text-green-500' />Mon - Fri 10.00 - 17:00</p>
+      {/* timing 24/7 */}
+      <p className='flex gap-2 items-center'><CiClock2 className='text-green-500' />Mon - Fri 10.00am - 5:00pm</p>    
+      
     </div>
+    {/* icons to connect social media  */}
     <div className='flex justify-between gap-4 '>
-    <FaFacebook className='cursor-pointer' onClick={handlefb} />
-    <FaLinkedin className='cursor-pointer' onClick={handlelinkedin} />
-    <TfiInstagram className='cursor-pointer' onClick={handleinstagram} />
+    <FaFacebook className='cursor-pointer target:_blank' onClick={handlefb} />
+    <FaLinkedin className='cursor-pointer target:_blank ' onClick={handlelinkedin} />
+    <TfiInstagram className='cursor-pointer target:_blank' onClick={handleinstagram} />
 
     </div>
 
