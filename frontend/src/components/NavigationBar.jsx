@@ -57,17 +57,18 @@ const NavigationBar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 w-full z-50 flex justify-between items-center px-4 py-3 transition-all duration-300 ${
-        isSticky ? "bg-white shadow-md py-2 mt-[-4]" : "bg-transparent py-4 text-white pt-16 md:pt-10"
+        isSticky ? "bg-white shadow-md py-2 mt-[-6px]" : "bg-transparent py-4 text-white pt-16 md:pt-10"
       } ${!showNavbar && "-translate-y-full"}`}
     >
       {/* Logo */}
       <div className="w-[150px]">
-        <img className="w-full h-auto" src="/logo.png" alt="Logo" />
+        <a href="/"> <img className="w-full h-auto" src="/logo.png" alt="Logo" />   </a>
+        
       </div>
 
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center gap-6">
-        <Link to="/home">Home</Link>
+        <Link to="/">Home</Link>
         <Link to="/cars">Cars</Link>
         <Link to="/booking">Booking</Link>
         <Link to="/about">About Us</Link>

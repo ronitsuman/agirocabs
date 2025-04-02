@@ -3,10 +3,12 @@ import { motion } from "framer-motion";
 import { FaCar, FaCarSide, FaShuttleVan, FaTruck } from "react-icons/fa";
 import StepsSection from "./StepsSection";
 
+
 const HeroSection = () => {
   const [vehicleType, setVehicleType] = useState("Sedan");
   const [pickupDate, setPickupDate] = useState("");
   const [dropDate, setDropDate] = useState("");
+  
 
   //  get current date and time
   const getCurrentDateTime = () => {
@@ -27,7 +29,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className=" relative w-full h-full bg-fixed bg-center bg-cover bg-[url('/bghero.jpg')] pt-32">
+    <div className=" relative w-full h-full bg-fixed bg-center bg-cover bg-[url('/1.webp')] pt-32">
       
       {/* Overlay */}
       <div className="absolute inset-0" style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}></div>
