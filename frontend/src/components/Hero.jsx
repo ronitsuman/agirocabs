@@ -5,7 +5,7 @@ import StepsSection from "./StepsSection";
 
 
 const HeroSection = () => {
-  const [vehicleType, setVehicleType] = useState("Sedan");
+  
   const [pickupDate, setPickupDate] = useState("");
   const [dropDate, setDropDate] = useState("");
   
@@ -21,12 +21,12 @@ const HeroSection = () => {
     setDropDate(getCurrentDateTime());
   }, []);
 
-  const vehicleOptions = [
-    { type: "Sedan", icon: <FaCar /> },
-    { type: "Hatchback", icon: <FaCarSide /> },
-    { type: "MPV", icon: <FaShuttleVan /> },
-    { type: "SUV", icon: <FaTruck /> },
-  ];
+  // const vehicleOptions = [
+  //   { type: "Sedan", icon: <FaCar /> },
+  //   { type: "Hatchback", icon: <FaCarSide /> },
+  //   { type: "MPV", icon: <FaShuttleVan /> },
+  //   { type: "SUV", icon: <FaTruck /> },
+  // ];
 
   return (
     <div className=" relative w-full h-full bg-fixed bg-center bg-cover bg-[url('/1.webp')] pt-32">
@@ -41,7 +41,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl md:text-6xl font-bold"
+          className="text-3xl md:text-6xl font-bold "
         >
           Looking for a <span className="text-green-400">vehicle?</span> You're at the right place.
         </motion.h1>
@@ -49,7 +49,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="mt-4 text-lg md:text-xl"
+          className="mt-4 text-lg md:text-xl font-sans"
         >
           Book your self Driven Car easily with AgiroCabs
         </motion.p>
@@ -61,8 +61,8 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="mt-8 bg-white text-black p-6 rounded-lg shadow-lg w-full max-w-3xl"
         >
-          {/* Vehicle Type Selection */}
-          <div className="flex justify-center  items-center  gap-3 mb-4 flex-auto">
+          {/* Vehicle Type Selection  not in use  */}
+          {/* <div className="flex justify-center  items-center  gap-3 mb-4 flex-auto">
             <h1 className="font-bold mb-3 ">What is Your vehicle Type?</h1>
             {vehicleOptions.map(({ type, icon }) => (
               <button
@@ -74,7 +74,7 @@ const HeroSection = () => {
                 {type}
               </button>
             ))}
-          </div>
+          </div> */}
 
           {/* Pickup & Drop Details */}
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4">

@@ -50,7 +50,7 @@ const StepsSection = () => {
             </div>
             {/* Step Title & Description */}
             <div className="flex flex-col gap-2 md:mt-[-30px] lg:mt-[-35px]">
-            <h3 className=" text-left lg:text-lg  font-bold  lg:text-center">{step.title}</h3>
+            <h3 className=" text-left text-white lg:text-lg  font-bold  lg:text-center">{step.title}</h3>
             <p className="text-gray-200 w-[150px] text-sm  text-left">{step.description}</p>
 
             </div>

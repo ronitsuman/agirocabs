@@ -27,13 +27,15 @@ const StatsSection = () => {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} className="relative w-full h-auto text-white bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/2.webp')" }}>
+    <section ref={ref} className="relative w-full h-auto text-white bg-fixed bg-cover bg-center" 
+    style={{ backgroundImage: "url('/2.webp')" }}
+    >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Content */}
       <div className="relative z-10 px-6 md:px-12 py-20 text-center max-w-6xl mx-auto">
-        <h2 className="text-2xl md:text-4xl font-bold leading-snug">
+        <h2 className="text-2xl md:text-5xl font-sans font-bold leading-snug">
           We offer customers a wide range of <br />
           <span className="text-green-500">commercial cars</span> and{" "}
           <span className="text-green-500">quality cars</span>
@@ -46,7 +48,7 @@ const StatsSection = () => {
         {/* Stats Grid */}
         <div className=" grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
           <StatBox title="Completed Orders" end={12394} duration={5} isInView={isInView} />
-          <StatBox title="Happy Customers" end={9845} duration={2.5} isInView={isInView} />
+          <StatBox title="Happy Customers" end={9845} duration={5} isInView={isInView} />
           <StatBox title="Vehicles Fleet" end={40} duration={3} isInView={isInView} />
           <StatBox title="Years Experience" end={7} duration={3.5} isInView={isInView} />
         </div>
