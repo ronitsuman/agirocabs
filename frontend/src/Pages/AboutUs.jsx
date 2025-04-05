@@ -13,7 +13,11 @@ const AboutUs = () => {
     {/* header section here  */}
     <Header text='About Us'/>
     {/* stats section here */}
+    <div className='mt-24 md:mt-0 lg:mt-0'>
     <AboutSection/>
+
+    </div>
+   
     {/* Team Member Section here */}
     <BoardOfDirectors/>
     {/* feature section here */}
@@ -21,7 +25,11 @@ const AboutUs = () => {
     {/* Quality section here */}
     <QualitySection/>
     {/* contact section here*/}
+    <div className='mt-122 md:mt-0 lg:mt-0'>
     <ContactSection text="Call us for further information. AgiroCabs customer support is here to help you anytime."/>
+
+    </div>
+   
     {/* footer section here */}
     <Footer/>
     </>
