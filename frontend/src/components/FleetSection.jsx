@@ -13,7 +13,7 @@ export default function FleetSection() {
       .then(response => response.json())
       .then(data => {
         setCars(data);
-        console.log(data)
+        // console.log(data)
       })
       .catch(error => {
         console.error('Error fetching cars:', error);
@@ -51,14 +51,17 @@ export default function FleetSection() {
               <hr className="mt-2 text-gray-200" />
               <div className="flex items-center justify-between">
                 <p className="text-xl font-semibold mt-2 flex flex-col">
-                  <span className="font-normal text-base">Daily rate from</span> {car.pricePerHour}
+                  <span className="font-normal text-base">Daily rate from</span>₹ {car.pricePerHour}/hr
                 </p>
                 <button className="mt-3 px-4 py-2 bg-green-500 text-white font-bold rounded-lg">Rent Now</button>
               </div>
             </div>
           ))}
+        
         </div>
+       
       </div>
+      <p className='text-center '>Scroll to see More cars ... </p>
     </div>
   );
 }
