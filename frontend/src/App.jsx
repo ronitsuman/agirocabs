@@ -11,6 +11,7 @@ import NavigationBar from "./components/NavigationBar";
 // Lazy Load Components
 const Home = lazy(() => import("./Pages/Home"));
 
+
 // Router Configuration
 const router = createBrowserRouter([
   {
@@ -61,16 +62,17 @@ const router = createBrowserRouter([
       </Suspense>
     ),
   },
-  {
-    path: "/register",
-    element: (
-      <Suspense fallback={<h2>Loading...</h2>}>
-        <NotificationBar/>
-        <NavigationBar/>
-        <Register/>
-      </Suspense>
-    ),
-  },
+  // {
+  //   path: "/register",
+  //   element: (
+  //     <Suspense fallback={<h2>Loading...</h2>}>
+  //       <NotificationBar/>
+  //       <NavigationBar/>
+  //       <Register/>
+  //     </Suspense>
+  //   ),
+  // }
+  
 ]);
 
 const App = () => {

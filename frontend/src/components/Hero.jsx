@@ -21,12 +21,7 @@ const HeroSection = () => {
     setDropDate(getCurrentDateTime());
   }, []);
 
-  // const vehicleOptions = [
-  //   { type: "Sedan", icon: <FaCar /> },
-  //   { type: "Hatchback", icon: <FaCarSide /> },
-  //   { type: "MPV", icon: <FaShuttleVan /> },
-  //   { type: "SUV", icon: <FaTruck /> },
-  // ];
+
 
   return (
     <div className=" relative w-full h-full bg-fixed bg-center bg-cover bg-[url('/1.webp')] pt-32">
@@ -61,20 +56,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="mt-8 bg-white text-black p-6 rounded-lg shadow-lg w-full max-w-3xl"
         >
-          {/* Vehicle Type Selection  not in use  */}
-          {/* <div className="flex justify-center  items-center  gap-3 mb-4 flex-auto">
-            <h1 className="font-bold mb-3 ">What is Your vehicle Type?</h1>
-            {vehicleOptions.map(({ type, icon }) => (
-              <button
-                key={type}
-                className={`p-2 rounded-md w-1/4 text-center font-medium flex flex-col items-center ${vehicleType === type ? "bg-green-500 text-white" : "bg-gray-200"}`}
-                onClick={() => setVehicleType(type)}
-              >
-                <span className="text-xl">{icon}</span>
-                {type}
-              </button>
-            ))}
-          </div> */}
+         
 
           {/* Pickup & Drop Details */}
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
