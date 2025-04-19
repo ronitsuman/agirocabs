@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const ContactSection = ({text}) => {
   return (
     <motion.div
-      className="bg-green-600 text-white p-10 md:p-20 flex flex-col md:flex-row items-center justify-between lg:justify-around lg:gap-2"
+      className="bg-[#E94E3A] text-white p-10 md:p-20 flex flex-col md:flex-row items-center justify-between lg:justify-around lg:gap-2"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -12,7 +12,7 @@ const ContactSection = ({text}) => {
       {/* Left Text Section */}
       <div className="text-center md:text-left max-w-md lg:w-[50%]">
         <motion.div
-          className="bg-green-700 text-sm font-semibold px-4 py-1 rounded-lg inline-block"
+          className="bg-[#e93a3a00] text-sm font-semibold px-4 py-1 rounded-lg inline-block"
           initial={{ opacity: 0, scale: 0.5 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
@@ -43,7 +43,7 @@ const ContactSection = ({text}) => {
           9006484700
         </motion.div>
         <motion.button
-          className="bg-green-700 px-6 py-2 mt-4 text-lg font-semibold rounded-lg hover:bg-green-800 transition"
+          className="bg-[#E94E3A] px-6 py-2 mt-4 text-lg font-semibold rounded-lg  transition"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.9, duration: 0.5 }}

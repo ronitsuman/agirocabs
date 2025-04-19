@@ -50,7 +50,7 @@ const QualitySection = () => {
                 onClick={() => setActiveTab(tab.name)}
                 className={`px-4 py-2 rounded shadow-sm transition-all font-medium hover:text-green-400 ${
                   activeTab === tab.name
-                    ? "bg-green-500 text-white"
+                    ? "bg-[#E94E3A] text-white"
                     : "bg-gray-100 text-gray-700 "
                 }`}
               >

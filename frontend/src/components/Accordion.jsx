@@ -19,9 +19,9 @@ const Accordion = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto my-10">
+    <div className="max-w-4xl mx-auto my-1 p-4 bg-[#feffea]">
       <h2 className="text-3xl font-bold text-center mb-6">Have Any Questions?</h2>
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-4 ">
         {faqData.map((item, index) => (
           <div key={index} className=" rounded-lg overflow-hidden bg-white shadow-md">
             <button
@@ -33,7 +33,7 @@ const Accordion = () => {
                 animate={{ rotate: activeIndex === index ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <AiOutlineDown className="w-5 h-5 text-white bg-green-400 " />
+                <AiOutlineDown className="w-5 h-5 text-white bg-[#E94E3A] " />
               </motion.div>
             </button>
 

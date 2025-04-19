@@ -36,7 +36,7 @@ export default function AdventureSection() {
           transition={{ duration: 1 }}
         >
           <h1 className="text-5xl font-bold leading-tight">
-            Let’s Your Adventure Begin. <br /> Book, Pick, Drive!
+            Let’s Your Adventure Begin. <br /><span className="text-[#E94E3A]"> Book, Pick, Drive!</span> 
           </h1>
         </motion.div>
 
@@ -50,7 +50,7 @@ export default function AdventureSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.3, duration: 0.8 }}
             >
-              <div className="bg-green-800 p-4 rounded-full mb-4">{service.icon}</div>
+              <div className="bg-[#E94E3A] p-4 rounded-full mb-4">{service.icon}</div>
               <h3 className="text-lg font-bold text-white">{service.title}</h3>
               <p className="text-white text-sm mt-2">{service.description}</p>
             </motion.div>

@@ -24,7 +24,7 @@ const Home = () => {
     <div>
       {/* Top Fixed Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 h-2 bg-green-500 z-50"
+        className="fixed top-0 left-0 h-2 bg-[#E94E3A] z-50"
         style={{ width }}
       />
       
@@ -43,24 +43,36 @@ const Home = () => {
       <div className=" w-full lg:h-30">
         <MovingText bgColor='bg-black' textColor='text-green-500'/>
       </div>
+        {/* Car Listing */}
+        <div className='bg-[#feffea] mt-[-45px]'>
+        <FleetSection />
+
+        </div>
+     
       
-      {/* Feature Section */}
-      <FeaturesSection />
+ 
       
       {/* Stats Section */}
       <StatsSection />
       
-      {/* Car Listing */}
-      <FleetSection />
+    
+
+           {/* Feature Section */}
+           <FeaturesSection />
+      
       
       {/* Adventure Section */}
       <AdventureSection />
       
       {/* News Section */}
-      <LatestNews />
+      {/* <LatestNews /> */}
       
       {/* Question Section */}
+      <div className='bg-[#feffea] '>
       <Accordion />
+
+      </div>
+      
       
       {/* Contact Section */}
       <ContactSection text=" AgiroCabs customer care is here to help you  anytime." />

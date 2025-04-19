@@ -35,13 +35,13 @@ const TeamCard = ({ name, title, img }) => (
       {/* Social Icons */}
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
         {[FaFacebookF, FaTwitter, FaLinkedinIn, FaPinterestP].map((Icon, index) => (
-          <a key={index} href="#" className="bg-green-500 text-white p-2 rounded-full text-sm">
+          <a key={index} href="#" className="bg-[#E94E3A] text-white p-2 rounded-full text-sm">
             <Icon />
           </a>
         ))}
       </div>
     </div>
-    <div className="mt-4 mb-6  bg-green-400">
+    <div className="mt-4 mb-6  bg-[#E94E3A]">
       <h3 className="text-white font-bold text-lg">{name}</h3>
       <p className="text-gray-300 text-sm">{title}</p>
     </div>

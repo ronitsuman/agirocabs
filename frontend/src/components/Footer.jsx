@@ -69,16 +69,16 @@ const Footer = () => {
         >
           <h3 className="text-xl font-semibold mb-3">Social Network</h3>
           <div className="flex space-x-3">
-            <div className="bg-gray-800 p-2 rounded-lg hover:bg-green-500">
+            <div className="bg-gray-800 p-2 rounded-lg hover:bg-[#E94E3A]">
               <FaFacebookF size={20}  onClick={handlefb} />
             </div>
-            <div className="bg-gray-800 p-2 rounded-lg hover:bg-green-500">
+            <div className="bg-gray-800 p-2 rounded-lg hover:bg-[#E94E3A]">
               <FaInstagram size={20} onClick={handleinstagram}/>
             </div>
-            <div className="bg-gray-800 p-2 rounded-lg hover:bg-green-500">
+            <div className="bg-gray-800 p-2 rounded-lg hover:bg-[#E94E3A]">
               <FaLinkedinIn size={20}  onClick={handlelinkedin} />
             </div>
-            {/* <div className="bg-gray-800 p-2 rounded-lg hover:bg-green-500">
+            {/* <div className="bg-gray-800 p-2 rounded-lg hover:bg-[#E94E3A]">
               <FaRss size={20} />
             </div> */}
           </div>
@@ -94,8 +94,8 @@ const Footer = () => {
       >
         <p>Copyright ©2025 All rights reserved | Agiro Technologies Pvt. Ltd. ❤️ AgiroCabs™</p>
         <div className="mt-2 flex justify-center space-x-4">
-          <a href="#" className="hover:text-green-500">Terms & Conditions</a>
-          <a href="#" className="hover:text-green-500">Privacy Policy</a>
+          <a href="#" className="hover:bg-[#E94E3A]">Terms & Conditions</a>
+          <a href="#" className="hover:bg-[#E94E3A]">Privacy Policy</a>
         </div>
       </motion.div>
     </motion.footer>

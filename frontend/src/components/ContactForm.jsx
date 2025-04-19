@@ -61,7 +61,7 @@ const ContactForm = () => {
             </div>
           </div> */}
 
-          <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-md font-semibold transition">
+          <button className="bg-[#E94E3A] hover:bg-[#E94E3A] text-white px-6 py-3 rounded-md font-semibold transition">
             Send Message
           </button>
         </div>
@@ -86,7 +86,7 @@ const ContactForm = () => {
               560064
             </p>
             <p className="text-sm text-gray-700 mb-1">📞 +91 9006484700</p>
-            <p className="text-sm text-green-600">✉️ support@agirocabs.com</p>
+            <p className="text-sm text-[#E94E3A]">✉️ support@agirocabs.com</p>
           </div>
         </div>
       </div>

@@ -72,7 +72,7 @@ const OTPVerify = ({ phone, onSuccess, onBack }) => {
           onClick={handleVerify}
           disabled={loading}
           className={`w-full py-3 rounded-md font-semibold ${
-            loading ? "bg-gray-400" : "bg-green-500 hover:bg-green-600"
+            loading ? "bg-gray-400" : "bg-[#E94E3A] hover:bg-green-600"
           } text-white`}
         >
           {loading ? "Verifying..." : "Verify OTP"}

@@ -35,7 +35,7 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="py-16 px-4 md:px-10 lg:px-20 bg-white">
+    <section className="py-16 px-4 md:px-10 lg:px-20 bg-[#feffea]">
       {/* Heading Animation (on scroll) */}
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
@@ -70,7 +70,7 @@ const FeaturesSection = () => {
               viewport={{ once: true }}
               className="flex items-start gap-4"
             >
-              <div className="bg-green-500 p-3 rounded-lg">{feature.icon}</div>
+              <div className="bg-[#E94E3A] p-3 rounded-lg">{feature.icon}</div>
               <div>
                 <h3 className="text-lg font-bold">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
@@ -105,7 +105,7 @@ const FeaturesSection = () => {
               viewport={{ once: true }}
               className="flex items-start gap-4"
             >
-              <div className="bg-green-500 p-3 rounded-lg">{feature.icon}</div>
+              <div className="bg-[#E94E3A] p-3 rounded-lg">{feature.icon}</div>
               <div>
                 <h3 className="text-lg font-bold">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>

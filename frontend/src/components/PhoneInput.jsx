@@ -67,7 +67,7 @@ const PhoneNumberLogin = ({ onNext }) => {
         // onClick={handleGetOTP}
         disabled={loading}
         className={`w-full py-3 rounded-lg font-semibold text-white transition-all duration-300 ${
-          loading ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
+          loading ? "bg-gray-400 cursor-not-allowed" : "bg-[#E94E3A] hover:bg-green-600"
         }`}
       >
         {loading ? "Sending OTP..." : "Get OTP"}

@@ -71,7 +71,7 @@ const BookingForm = ({ car, setBookingDetails, setFare }) => {
       <input name="phone" placeholder="Your Phone" className="input" onChange={handleChange} />
       <textarea name="request" placeholder="Any special request?" className="input col-span-2" rows="2" onChange={handleChange} />
 
-      <button onClick={handleCalculateFare} className="col-span-2 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition">Submit</button>
+      <button onClick={handleCalculateFare} className="col-span-2 bg-[#E94E3A] text-white py-2 px-4 rounded hover:bg-green-600 transition">Submit</button>
     </div>
   );
 };

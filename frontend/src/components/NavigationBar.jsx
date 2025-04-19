@@ -339,8 +339,8 @@ const NavigationBar = () => {
   return (
     <>
       <nav
-        className={`fixed lg:pl-22 lg:pr-32 top-0 mt-9 h-22 left-0 right-0 w-full flex justify-between items-center transition-all duration-300 z-50 ${
-          isSticky ? "bg-white shadow-md py-2 mt-[-6px]" : "bg-transparent py-4 text-white pt-16 md:pt-10"
+        className={`fixed lg:pl-22 lg:pr-32 top-0  h-22 left-0 right-0 w-full flex justify-between items-center transition-all duration-300 z-50 ${
+          isSticky ? "bg-[#feffea] shadow-md py-2 mt-[-6px]" : "bg-transparent py-4 text-white pt-16 md:pt-20"
         } ${!showNavbar && "-translate-y-full"}`}
       >
         {/* Logo */}
@@ -361,7 +361,7 @@ const NavigationBar = () => {
 
         {/*  Sign In Button (Desktop) */}
         <button
-          className="hidden md:block bg-green-500 rounded-md text-white px-4 py-2"
+          className="hidden md:block bg-[#E94E3A] rounded-md text-white px-4 py-2"
           onClick={() => setIsAuthOpen(true)}
         >
           Log In
@@ -381,16 +381,16 @@ const NavigationBar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-20 left-0 w-full min-h-full text-black bg-white shadow-lg flex flex-col items-center py-4 space-y-6 z-10"
           >
-            <Link to="/home" onClick={() => setIsOpen(false)}>Home</Link>
+            <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
             <Link to="/cars" onClick={() => setIsOpen(false)}>Cars</Link>
             <Link to="/booking" onClick={() => setIsOpen(false)}>Booking</Link>
             <Link to="/about" onClick={() => setIsOpen(false)}>About Us</Link>
             <Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
-            <Link to="/register" onClick={() => setIsOpen(false)}>Register</Link>
+            {/* <Link to="/register" onClick={() => setIsOpen(false)}>Register</Link> */}
 
             {/*  Sign In Button (Mobile) */}
             <button
-              className="bg-green-500 rounded-md text-white px-4 py-2"
+              className="bg-[#E94E3A] rounded-md text-white px-4 py-2"
               onClick={() => {
                 setIsAuthOpen(true);
                 setIsOpen(false); // Close menu

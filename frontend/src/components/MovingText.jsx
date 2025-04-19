@@ -11,7 +11,7 @@ const MovingText = ({ bgColor , textColor }) => {
         style={{ minWidth: "200%" }}
       >
         {[...Array(5)].map((_, index) => (
-          <span key={index} className="mr-10">
+          <span key={index} className="mr-10 text-[#E94E3A]">
             Hatchback — Prime Sedan — Sedan — MPV — Compact SUV — SUV —
             Sports Car — Luxury Car — Station Wagon — Traveller — Minivans —
             Premium Cars —  
