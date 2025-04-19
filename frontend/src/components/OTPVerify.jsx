@@ -17,7 +17,7 @@ const OTPVerify = ({ phone, onSuccess, onBack }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:8080/api/auth/verify-otp", {
+      const response = await axios.post("http://localhost:8080/api/v1/auth/verify-otp", {
         phoneNumber: phone,
         otp: otp,
       });

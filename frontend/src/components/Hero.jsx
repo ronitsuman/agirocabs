@@ -212,13 +212,14 @@ const HeroSection = () => {
         </label>
         <select 
           id="PickupLocation" 
-          className="p-3 md:p-4 border rounded-md w-full text-sm md:text-base"
+          className="p-3 md:p-4  border rounded-md w-full text-sm md:text-base"
         >
-          <option value="">Select Pickup Location</option>
-          <option value="Delhi">Patna Junction</option>
-          <option value="Mumbai">Jayprakash International Airport Patna</option>
-          <option value="Bangalore">Danapur Railway Station</option>
-          <option value="Hyderabad">Patliputra Railway Station</option>
+          <option className="bg-[#feffea]/60" value="">Select Pickup Location</option>
+          <option className="bg-[#feffea]/60" value="Patna airport">Jayprakash International Airport Patna</option>
+          <option className="bg-[#feffea]/60" value="Patna junction">Patna Junction </option>
+          <option className="bg-[#feffea]/60" value="Danapur Junction">Danapur Junction</option>
+          <option className="bg-[#feffea]/60" value="Patliputra station">Patliputra Railway Station</option>
+          <option className="bg-[#feffea]/60" value="Boring road">Boring Road</option>
         </select>
       </div>
 
@@ -243,15 +244,15 @@ const HeroSection = () => {
           Drop-Off Location
         </label>
         <select 
-          id="DropoffLocation" 
-          className="p-3 md:p-4 border rounded-md w-full text-sm md:text-base"
+          id="PickupLocation" 
+          className="p-3 md:p-4  border rounded-md w-full text-sm md:text-base"
         >
-          <option value="">Select Drop-off Location</option>
-          <option value="Delhi">Del</option>
-          <option value="Mumbai">Mumbai</option>
-          <option value="Bangalore">Bangalore</option>
-          <option value="Hyderabad">Hyderabad</option>
-          <option value="Chennai">Chennai</option>
+          <option className="bg-[#feffea]/60" value="">Select Drop Location</option>
+          <option className="bg-[#feffea]/60" value="Patna airport">Jayprakash International Airport Patna</option>
+          <option className="bg-[#feffea]/60" value="Patna junction">Patna Junction </option>
+          <option className="bg-[#feffea]/60" value="Danapur Junction">Danapur Junction</option>
+          <option className="bg-[#feffea]/60" value="Patliputra station">Patliputra Railway Station</option>
+          <option className="bg-[#feffea]/60" value="Boring road">Boring Road</option>
         </select>
       </div>
 
@@ -272,7 +273,7 @@ const HeroSection = () => {
 
   {/* Submit Button - responsive width and padding */}
   <div className="mt-6 flex justify-center">
-    <button className="bg-[#E94E3A]  text-white px-4 py-2 md:px-6 md:py-3 rounded-md w-full sm:w-[300px] md:w-[400px] transition-colors duration-300">
+    <button  className="bg-[#E94E3A]  text-white px-4 py-2 md:px-6 md:py-3 rounded-md w-full sm:w-[300px] md:w-[400px] transition-colors duration-300">
       Find Cars
     </button>
   </div>

@@ -9,31 +9,33 @@ const PhoneNumberLogin = ({ onNext }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-//   const handleGetOTP = async () => {
-//     if (!phone || phone.length < 10) {
-//       setError("Please enter a valid phone number");
-//       return;
-//     }
+  // const handleGetOTP = async () => {
+  //   if (!phone || phone.length < 10) {
+  //     setError("Please enter a valid phone number");
+  //     return;
+  //   }
 
-//     setError("");
-//     setLoading(true);
+  //   setError("");
+  //   setLoading(true);
 
-//     try {
-//       const response = await axios.post("http://localhost:8080/api/auth/send-otp", {
-//         phoneNumber: phone,
-//       });
+  //   try {
+  //     const response = await axios.post("http://localhost:8080/api/v1/auth/send-otp", {
+  //       phoneNumber: phone,
 
-//       if (response.data.success) {
-//         onNext(); // Move to OTP step
-//       } else {
-//         setError("Failed to send OTP. Try again.");
-//       }
-//     } catch (err) {
-//       setError("Something went wrong. Try again.");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
+  //     });
+  //     console.log(response)
+
+  //     if (response.data.success) {
+  //       onNext(); // Move to OTP step
+  //     } else {
+  //       setError("Failed to send OTP. Try again.");
+  //     }
+  //   } catch (err) {
+  //     setError("Something went wrong. Try again.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <div className="">
