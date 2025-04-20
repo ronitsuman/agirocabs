@@ -51,7 +51,7 @@ const NotificationBar = () => {
     className=' text-sm p-1  md:text-base pointer-events-auto z-[100] flex items-center justify-between pl-4 pr-4 md:justify-between md:pl-4 md:pr-4 bg-black text-white md:p-2 will-change-scroll  '>
        {/* phone , mail,timing  */}
       <div className='md:flex md:items-center md:gap-4 '>
-      <p className=' gap-2 items-center hidden md:visible  '><IoCall className='text-[#E94E3A]'/><a href="tel:+919006484700">+919006484700</a> </p>
+      <p className=' gap-2 items-center hidden md:flex  '><IoCall className='text-[#E94E3A]'/><a href="tel:+919006484700">+919006484700</a> </p>
       <p className='flex gap-2 items-center'><IoIosMail className='text-[#E94E3A]' /><a href="mailto:support@agirocabs.com" className='font-sans'>support@agirocabs.com</a> </p>
       {/* timing 24/7 */}
       <p className='hidden gap-2 items-center font-sans'><CiClock2 className='text-green-500' />Mon - Fri 10.00am - 5:00pm</p>    

@@ -216,7 +216,7 @@
 //       <div className="bg-white p-6 rounded-lg shadow-md mb-8">
 //         <h2 className="text-xl font-bold mb-4">Vehicle Type</h2>
 //         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-//           {["Hatchback", "Prime Sedan", "Sedan", "SUV"].map((type) => (
+//           {["Hatchback", "Sedan", "MPV", "Compact SUV"].map((type) => (
 //             <label key={type} className="flex items-center space-x-2 cursor-pointer">
 //               <input
 //                 type="radio"
@@ -361,6 +361,7 @@
 //         const res = await fetch("http://localhost:8080/api/v1/cars");
 //         const data = await res.json();
 //         setCars(data);
+//         console.log(data)
 //       } catch (err) {
 //         console.error("Error fetching cars:", err);
 //       } finally {
@@ -415,12 +416,12 @@
 //               <div className="flex flex-col md:flex-row gap-6">
 //                 <div className="w-full md:w-1/3 flex justify-center">
 //                   <img
-//                     src={selectedCar.image || "/car-placeholder.png"}
+//                     src={selectedCar.imageUrl || "/car-placeholder.png"}
 //                     alt={selectedCar.model}
 //                     className="h-48 object-contain"
 //                   />
 //                 </div>
-//                 <div className="w-full md:w-2/3">
+//                 <div id="sec" className="w-full md:w-2/3">
 //                   <h2 className="text-2xl font-bold mb-2">{selectedCar.model}</h2>
 //                   <div className="grid grid-cols-2 gap-4 mb-4">
 //                     <div>
@@ -481,7 +482,7 @@
 //                   >
 //                     <div className="h-40 flex items-center justify-center mb-4">
 //                       <img
-//                         src={car.image || "/car-placeholder.png"}
+//                         src={car.imageUrl || "/car-placeholder.png"}
 //                         alt={car.model}
 //                         className="h-full object-contain"
 //                       />
@@ -495,10 +496,12 @@
 //                         </p>
 //                       </div>
 //                       <button
+//                          id="#sec1"
 //                         className="text-green-500 hover:text-green-600 font-medium text-sm"
 //                         onClick={(e) => {
 //                           e.stopPropagation();
 //                           setSelectedCar(car);
+
 //                         }}
 //                       >
 //                         View Details
@@ -521,16 +524,519 @@
 
 //part 4 
 
+// import React, { useEffect, useState } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+
+// const CarList = () => {
+//   const [cars, setCars] = useState([]);
+//   const [selectedTypes, setSelectedTypes] = useState([]);
+//   const [expandedCarId, setExpandedCarId] = useState(null);
+//   const [loading, setLoading] = useState(true);
+
+//   const vehicleTypes = ["Hatchback", "Sedan", "Compact SUV","SUV","MPV"  ];
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const res = await fetch("http://localhost:8080/api/v1/cars");
+//         const data = await res.json();
+//         setCars(data);
+//         console.log(data)
+//       } catch (err) {
+//         console.error("Error fetching cars:", err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     fetchData();
+//   }, []);
+
+//   const toggleVehicleType = (type) => {
+//     setSelectedTypes(prev =>
+//       prev.includes(type)
+//         ? prev.filter(t => t !== type)
+//         : [...prev, type]
+//     );
+//   };
+
+//   const toggleCarExpansion = (carId) => {
+//     setExpandedCarId(expandedCarId === carId ? null : carId);
+//   };
+
+//   const filteredCars = selectedTypes.length === 0
+//     ? cars
+//     : cars.filter(car => selectedTypes.includes(car.type));
+
+//   return (
+//     <div className="p-4 mt-4 max-w-7xl mx-auto bg-[#feffea]">
+//       <div className="flex flex-col lg:flex-row gap-6">
+//         {/* Vehicle Type Selection - Left Side */}
+      
+//         <div className="hidden md:block w-full lg:w-1/4 bg-[#f0f1d5] p-6 rounded-lg shadow-md ">
+//           <h2 className="text-xl font-bold mb-4">Vehicle Type</h2>
+//           <div className="space-y-3 ">
+//             {vehicleTypes.map(type => (
+//               <label key={type} className="flex items-center space-x-3 cursor-pointer">
+//                 <input
+//                   type="checkbox"
+//                   checked={selectedTypes.includes(type)}
+//                   onChange={() => toggleVehicleType(type)}
+//                   className="h-5 w-5 text-green-500 rounded border-gray-300 focus:ring-green-500"
+//                 />
+//                 <span className="text-gray-700">{type}</span>
+//               </label>
+//             ))}
+//           </div>
+//         </div>
+
+//         {/* Car Display - Right Side */}
+//         <div className="w-full lg:w-3/4">
+//           {/* Car List Grid */}
+//           {loading ? (
+//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+//               {[...Array(6)].map((_, index) => (
+//                 <div key={index} className="bg-white p-4 rounded-lg shadow-md animate-pulse">
+//                   <div className="h-40 bg-gray-200 rounded mb-4"></div>
+//                   <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
+//                   <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+//                   <div className="h-10 bg-gray-200 rounded"></div>
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+//               <AnimatePresence>
+//                 {filteredCars.map(car => (
+//                   <div key={car.id} className="bg-[#f0f1d5] rounded-lg shadow-md overflow-hidden">
+//                     {/* Car Card Top */}
+//                     <div 
+//                       className="p-4 cursor-pointer"
+//                       onClick={() => toggleCarExpansion(car.id)}
+//                     >
+//                       <div className="h-40 flex items-center justify-center mb-4">
+//                         <img
+//                           src={car.imageUrl || "/car-placeholder.png"}
+//                           alt={car.model}
+//                           className="h-full object-contain"
+//                         />
+//                       </div>
+//                       <h3 className="text-lg font-semibold mb-2">{car.model}</h3>
+//                       <div className="flex justify-between items-center">
+//                         <div>
+//                           <p className="text-gray-500 text-sm">From</p>
+//                           <p className="text-xl font-bold text-green-600">
+//                             Rs{car.pricePerHour}/Hr
+//                           </p>
+//                         </div>
+//                         <button
+//                           className="text-green-500 hover:text-green-600 font-medium text-sm"
+//                           onClick={(e) => {
+//                             e.stopPropagation();
+//                             toggleCarExpansion(car.id);
+//                           }}
+//                         >
+//                           {expandedCarId === car.id ? "Hide Details" : "View Details"}
+//                         </button>
+//                       </div>
+//                     </div>
+
+//                     {/* Expanded Details */}
+//                     {expandedCarId === car.id && (
+//                       <motion.div
+//                         initial={{ opacity: 0, height: 0 }}
+//                         animate={{ opacity: 1, height: "auto" }}
+//                         exit={{ opacity: 0, height: 0 }}
+//                         transition={{ duration: 0.3 }}
+//                         className="bg-[#f0f1d5] p-4 border-t"
+//                       >
+//                         <div className="grid grid-cols-2 p-2 gap-2 mb-4">
+//                           <div>
+//                           <p className="text-gray-600">Seats: {car.specs?.seats || 5}</p>
+//                           <p className="text-gray-600 mt-2">Fuel: {car.specs?.fuelType || "Petrol"}</p>
+                          
+//                           </div>
+                          
+//                           <div className="">
+//                           <p className="text-gray-600 ">Year: {car.year || "N/A"}cc</p>
+                          
+//                             <p className="text-gray-600 mt-2">Type: {car.type}</p>
+                            
+                            
+//                           </div>
+                          
+//                           <p className="text-gray-600 ">Engine: {car.engine || "N/A"}cc</p>
+                          
+//                           <p className="text-gray-600">Transmission: {car.transmission || "N/A"}</p>
+
+                          
+                         
+                         
+//                         </div>
+//                         <button className="w-full bg-[#E94E3A] hover:bg-[#E94E3A] text-white py-2 rounded-md transition-colors">
+//                           Rent Now
+//                         </button>
+//                       </motion.div>
+//                     )}
+//                   </div>
+//                 ))}
+//               </AnimatePresence>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default CarList;
+
+
+// part 5
+// import React, { useEffect } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import { useDispatch, useSelector } from "react-redux";
+// import { selectCar, clearSelectedCar, setFilteredTypes } from "../redux/CarAction";
+
+// const CarList = () => {
+//   const dispatch = useDispatch();
+  
+//   // Get state from Redux store
+//   const { 
+//     cars, 
+//     loading, 
+//     filteredTypes: selectedTypes, 
+//     selectedCar: expandedCarId 
+//   } = useSelector(state => ({
+//     cars: state.car.allCars,
+//     loading: state.car.loading,
+//     filteredTypes: state.car.filteredTypes,
+//     selectedCar: state.car.selectedCar
+//   }));
+
+//   const vehicleTypes = ["Hatchback", "Sedan", "Compact SUV", "SUV", "MPV"];
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const res = await fetch("http://localhost:8080/api/v1/cars");
+//         const data = await res.json();
+//         dispatch({ type: 'FETCH_CARS_SUCCESS', payload: data });
+//       } catch (err) {
+//         console.error("Error fetching cars:", err);
+//         dispatch({ type: 'FETCH_CARS_FAILURE', payload: err.message });
+//       }
+//     };
+    
+//     dispatch({ type: 'FETCH_CARS_START' });
+//     fetchData();
+//   }, [dispatch]);
+
+//   const toggleVehicleType = (type) => {
+//     const newTypes = selectedTypes.includes(type)
+//       ? selectedTypes.filter(t => t !== type)
+//       : [...selectedTypes, type];
+//     dispatch(setFilteredTypes(newTypes));
+//   };
+
+//   const toggleCarExpansion = (car) => {
+//     if (expandedCarId && expandedCarId.id === car.id) {
+//       dispatch(clearSelectedCar());
+//     } else {
+//       dispatch(selectCar(car));
+//     }
+//   };
+
+//   const filteredCars = selectedTypes.length === 0
+//     ? cars
+//     : cars.filter(car => selectedTypes.includes(car.type));
+
+//   return (
+//     <div className="p-4 mt-4 max-w-7xl mx-auto bg-[#feffea]">
+//       <div className="flex flex-col lg:flex-row gap-6">
+//         {/* Vehicle Type Selection - Left Side */}
+//         <div className="hidden md:block w-full lg:w-1/4 bg-[#f0f1d5] p-6 rounded-lg shadow-md">
+//           <h2 className="text-xl font-bold mb-4">Vehicle Type</h2>
+//           <div className="space-y-3">
+//             {vehicleTypes.map(type => (
+//               <label key={type} className="flex items-center space-x-3 cursor-pointer">
+//                 <input
+//                   type="checkbox"
+//                   checked={selectedTypes.includes(type)}
+//                   onChange={() => toggleVehicleType(type)}
+//                   className="h-5 w-5 text-green-500 rounded border-gray-300 focus:ring-green-500"
+//                 />
+//                 <span className="text-gray-700">{type}</span>
+//               </label>
+//             ))}
+//           </div>
+//         </div>
+
+//         {/* Car Display - Right Side */}
+//         <div className="w-full lg:w-3/4">
+//           {loading ? (
+//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+//               {[...Array(6)].map((_, index) => (
+//                 <div key={index} className="bg-white p-4 rounded-lg shadow-md animate-pulse">
+//                   <div className="h-40 bg-gray-200 rounded mb-4"></div>
+//                   <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
+//                   <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+//                   <div className="h-10 bg-gray-200 rounded"></div>
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+//               <AnimatePresence>
+//                 {filteredCars.map(car => (
+//                   <div key={car.id} className="bg-[#f0f1d5] rounded-lg shadow-md overflow-hidden">
+//                     <div 
+//                       className="p-4 cursor-pointer"
+//                       onClick={() => toggleCarExpansion(car)}
+//                     >
+//                       <div className="h-40 flex items-center justify-center mb-4">
+//                         <img
+//                           src={car.imageUrl || "/car-placeholder.png"}
+//                           alt={car.model}
+//                           className="h-full object-contain"
+//                         />
+//                       </div>
+//                       <h3 className="text-lg font-semibold mb-2">{car.model}</h3>
+//                       <div className="flex justify-between items-center">
+//                         <div>
+//                           <p className="text-gray-500 text-sm">From</p>
+//                           <p className="text-xl font-bold text-green-600">
+//                             Rs{car.pricePerHour}/Hr
+//                           </p>
+//                         </div>
+//                         <button
+//                           className="text-green-500 hover:text-green-600 font-medium text-sm"
+//                           onClick={(e) => {
+//                             e.stopPropagation();
+//                             toggleCarExpansion(car);
+//                           }}
+//                         >
+//                           {expandedCarId?.id === car.id ? "Hide Details" : "View Details"}
+//                         </button>
+//                       </div>
+//                     </div>
+
+//                     <AnimatePresence>
+//                       {expandedCarId?.id === car.id && (
+//                         <motion.div
+//                           initial={{ opacity: 0, height: 0 }}
+//                           animate={{ opacity: 1, height: "auto" }}
+//                           exit={{ opacity: 0, height: 0 }}
+//                           transition={{ duration: 0.3 }}
+//                           className="bg-[#f0f1d5] p-4 border-t"
+//                         >
+//                           <div className="grid grid-cols-2 p-2 gap-2 mb-4">
+//                             <div>
+//                               <p className="text-gray-600">Seats: {car.specs?.seats || 5}</p>
+//                               <p className="text-gray-600 mt-2">Fuel: {car.specs?.fuelType || "Petrol"}</p>
+//                             </div>
+//                             <div>
+//                               <p className="text-gray-600">Year: {car.year || "N/A"}</p>
+//                               <p className="text-gray-600 mt-2">Type: {car.type}</p>
+//                             </div>
+//                             <p className="text-gray-600">Engine: {car.engine || "N/A"}cc</p>
+//                             <p className="text-gray-600">Transmission: {car.transmission || "N/A"}</p>
+//                           </div>
+//                           <button className="w-full bg-[#E94E3A] hover:bg-[#E94E3A] text-white py-2 rounded-md transition-colors">
+//                             Rent Now
+//                           </button>
+//                         </motion.div>
+//                       )}
+//                     </AnimatePresence>
+//                   </div>
+//                 ))}
+//               </AnimatePresence>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default CarList;
+
+
+//part 6
+// import React, { useEffect, useState } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import { useDispatch } from "react-redux";
+// import { selectCar } from "../redux/CarAction"; // Adjust the path as needed
+
+// const CarList = () => {
+//   const [cars, setCars] = useState([]);
+//   const [selectedTypes, setSelectedTypes] = useState([]);
+//   const [expandedCarId, setExpandedCarId] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const dispatch = useDispatch(); // Initialize dispatch
+
+//   const vehicleTypes = ["Hatchback", "Sedan", "Compact SUV", "SUV", "MPV"];
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const res = await fetch("http://localhost:8080/api/v1/cars");
+//         const data = await res.json();
+//         setCars(data);
+//         console.log(data);
+//       } catch (err) {
+//         console.error("Error fetching cars:", err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     fetchData();
+//   }, []);
+
+//   const toggleVehicleType = (type) => {
+//     setSelectedTypes((prev) =>
+//       prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+//     );
+//   };
+
+//   const toggleCarExpansion = (carId) => {
+//     setExpandedCarId(expandedCarId === carId ? null : carId);
+//   };
+
+//   const filteredCars = selectedTypes.length === 0
+//     ? cars
+//     : cars.filter((car) => selectedTypes.includes(car.type));
+
+//   const handleSelectCar = (car) => {
+//     dispatch(selectCar(car)); // Dispatch the selectCar action with the car object
+//     console.log("Selected Car Saved to Redux:", car); // Log for verification
+//     // Optionally navigate or show a message (e.g., alert("Car selected!"));
+//   };
+
+//   return (
+//     <div className="p-4 mt-4 max-w-7xl mx-auto bg-[#feffea]">
+//       <div className="flex flex-col lg:flex-row gap-6">
+//         {/* Vehicle Type Selection - Left Side */}
+//         <div className="hidden md:block w-full lg:w-1/4 bg-[#f0f1d5] p-6 rounded-lg shadow-md">
+//           <h2 className="text-xl font-bold mb-4">Vehicle Type</h2>
+//           <div className="space-y-3">
+//             {vehicleTypes.map((type) => (
+//               <label key={type} className="flex items-center space-x-3 cursor-pointer">
+//                 <input
+//                   type="checkbox"
+//                   checked={selectedTypes.includes(type)}
+//                   onChange={() => toggleVehicleType(type)}
+//                   className="h-5 w-5 text-green-500 rounded border-gray-300 focus:ring-green-500"
+//                 />
+//                 <span className="text-gray-700">{type}</span>
+//               </label>
+//             ))}
+//           </div>
+//         </div>
+
+//         {/* Car Display - Right Side */}
+//         <div className="w-full lg:w-3/4">
+//           {loading ? (
+//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+//               {[...Array(6)].map((_, index) => (
+//                 <div key={index} className="bg-white p-4 rounded-lg shadow-md animate-pulse">
+//                   <div className="h-40 bg-gray-200 rounded mb-4"></div>
+//                   <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
+//                   <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+//                   <div className="h-10 bg-gray-200 rounded"></div>
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+//               <AnimatePresence>
+//                 {filteredCars.map((car) => (
+//                   <div key={car.id} className="bg-[#f0f1d5] rounded-lg shadow-md overflow-hidden">
+//                     <div className="p-4 cursor-pointer" onClick={() => toggleCarExpansion(car.id)}>
+//                       <div className="h-40 flex items-center justify-center mb-4">
+//                         <img
+//                           src={car.imageUrl || "/car-placeholder.png"}
+//                           alt={car.model}
+//                           className="h-full object-contain"
+//                         />
+//                       </div>
+//                       <h3 className="text-lg font-semibold mb-2">{car.model}</h3>
+//                       <div className="flex justify-between items-center">
+//                         <div>
+//                           <p className="text-gray-500 text-sm">From</p>
+//                           <p className="text-xl font-bold text-green-600">
+//                             Rs{car.pricePerHour}/Hr
+//                           </p>
+//                         </div>
+//                         <button
+//                           className="text-green-500 hover:text-green-600 font-medium text-sm"
+//                           onClick={(e) => {
+//                             e.stopPropagation();
+//                             toggleCarExpansion(car.id);
+//                           }}
+//                         >
+//                           {expandedCarId === car.id ? "Hide Details" : "View Details"}
+//                         </button>
+//                       </div>
+//                     </div>
+
+//                     {expandedCarId === car.id && (
+//                       <motion.div
+//                         initial={{ opacity: 0, height: 0 }}
+//                         animate={{ opacity: 1, height: "auto" }}
+//                         exit={{ opacity: 0, height: 0 }}
+//                         transition={{ duration: 0.3 }}
+//                         className="bg-[#f0f1d5] p-4 border-t"
+//                       >
+//                         <div className="grid grid-cols-2 p-2 gap-2 mb-4">
+//                           <div>
+//                             <p className="text-gray-600">Seats: {car.specs?.seats || 5}</p>
+//                             <p className="text-gray-600 mt-2">Fuel: {car.specs?.fuelType || "Petrol"}</p>
+//                           </div>
+//                           <div>
+//                             <p className="text-gray-600">Year: {car.year || "N/A"}</p>
+//                             <p className="text-gray-600 mt-2">Type: {car.type}</p>
+//                           </div>
+//                           <p className="text-gray-600">Engine: {car.engine || "N/A"}cc</p>
+//                           <p className="text-gray-600">Transmission: {car.transmission || "N/A"}</p>
+//                         </div>
+//                         <button
+//                           className="w-full bg-[#E94E3A] hover:bg-[#E94E3A] text-white py-2 rounded-md transition-colors"
+//                           onClick={() => handleSelectCar(car)}
+//                         >
+//                           Rent Now
+//                         </button>
+//                       </motion.div>
+//                     )}
+//                   </div>
+//                 ))}
+//               </AnimatePresence>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default CarList;
+
+
+//part 7 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { selectCar } from "../redux/CarAction";
 
 const CarList = () => {
   const [cars, setCars] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [expandedCarId, setExpandedCarId] = useState(null);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const vehicleTypes = ["Hatchback", "Sedan", "Compact SUV","SUV","MPV"  ];
+  const vehicleTypes = ["Hatchback", "Sedan", "Compact SUV", "SUV", "MPV"];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -538,7 +1044,7 @@ const CarList = () => {
         const res = await fetch("http://localhost:8080/api/v1/cars");
         const data = await res.json();
         setCars(data);
-        console.log(data)
+        console.log(data);
       } catch (err) {
         console.error("Error fetching cars:", err);
       } finally {
@@ -549,10 +1055,8 @@ const CarList = () => {
   }, []);
 
   const toggleVehicleType = (type) => {
-    setSelectedTypes(prev =>
-      prev.includes(type)
-        ? prev.filter(t => t !== type)
-        : [...prev, type]
+    setSelectedTypes((prev) =>
+      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
     );
   };
 
@@ -562,16 +1066,21 @@ const CarList = () => {
 
   const filteredCars = selectedTypes.length === 0
     ? cars
-    : cars.filter(car => selectedTypes.includes(car.type));
+    : cars.filter((car) => selectedTypes.includes(car.type));
+
+  const handleSelectCar = (car) => {
+    dispatch(selectCar(car)); // Save car to Redux
+    console.log("Selected Car Saved to Redux:", car);
+    navigate("/booking"); // Navigate to Booking page
+  };
 
   return (
-    <div className="p-4 mt-4 max-w-7xl mx-auto">
+    <div className="p-4 mt-4 max-w-7xl mx-auto bg-[#feffea]">
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* Vehicle Type Selection - Left Side */}
-        <div className="w-full lg:w-1/4 bg-white p-6 rounded-lg shadow-md">
+        <div className="hidden md:block w-full lg:w-1/4 bg-[#f0f1d5] p-6 rounded-lg shadow-md">
           <h2 className="text-xl font-bold mb-4">Vehicle Type</h2>
           <div className="space-y-3">
-            {vehicleTypes.map(type => (
+            {vehicleTypes.map((type) => (
               <label key={type} className="flex items-center space-x-3 cursor-pointer">
                 <input
                   type="checkbox"
@@ -585,9 +1094,7 @@ const CarList = () => {
           </div>
         </div>
 
-        {/* Car Display - Right Side */}
         <div className="w-full lg:w-3/4">
-          {/* Car List Grid */}
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, index) => (
@@ -602,16 +1109,12 @@ const CarList = () => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <AnimatePresence>
-                {filteredCars.map(car => (
-                  <div key={car.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                    {/* Car Card Top */}
-                    <div 
-                      className="p-4 cursor-pointer"
-                      onClick={() => toggleCarExpansion(car.id)}
-                    >
+                {filteredCars.map((car) => (
+                  <div key={car.id} className="bg-[#f0f1d5] rounded-lg shadow-md overflow-hidden">
+                    <div className="p-4 cursor-pointer" onClick={() => toggleCarExpansion(car.id)}>
                       <div className="h-40 flex items-center justify-center mb-4">
                         <img
-                          src={car.image || "/car-placeholder.png"}
+                          src={car.imageUrl || "/car-placeholder.png"}
                           alt={car.model}
                           className="h-full object-contain"
                         />
@@ -636,30 +1139,30 @@ const CarList = () => {
                       </div>
                     </div>
 
-                    {/* Expanded Details */}
                     {expandedCarId === car.id && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="bg-gray-50 p-4 border-t"
+                        className="bg-[#f0f1d5] p-4 border-t"
                       >
-                        <div className="grid grid-cols-2 gap-4 mb-4">
+                        <div className="grid grid-cols-2 p-2 gap-2 mb-4">
                           <div>
                             <p className="text-gray-600">Seats: {car.specs?.seats || 5}</p>
-                            <p className="text-gray-600">Luggage: {car.specs?.luggage || 2}</p>
+                            <p className="text-gray-600 mt-2">Fuel: {car.specs?.fuelType || "Petrol"}</p>
                           </div>
                           <div>
-                            <p className="text-gray-600">Doors: {car.specs?.doors || 4}</p>
-                            <p className="text-gray-600">Fuel: {car.specs?.fuelType || "Petrol"}</p>
+                            <p className="text-gray-600">Year: {car.year || "N/A"}</p>
+                            <p className="text-gray-600 mt-2">Type: {car.type}</p>
                           </div>
-                          <p className="text-gray-600">Horsepower: {car.horsepower || "N/A"}</p>
                           <p className="text-gray-600">Engine: {car.engine || "N/A"}cc</p>
-                          <p className="text-gray-600">Drive: {car.drive || "N/A"}</p>
-                          <p className="text-gray-600">Type: {car.type}</p>
+                          <p className="text-gray-600">Transmission: {car.transmission || "N/A"}</p>
                         </div>
-                        <button className="w-full bg-[#E94E3A] hover:bg-[#E94E3A] text-white py-2 rounded-md transition-colors">
+                        <button
+                          className="w-full bg-[#E94E3A] hover:bg-[#E94E3A] text-white py-2 rounded-md transition-colors"
+                          onClick={() => handleSelectCar(car)}
+                        >
                           Rent Now
                         </button>
                       </motion.div>

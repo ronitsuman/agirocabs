@@ -3,11 +3,13 @@ import { FaUsers, FaSuitcase } from "react-icons/fa";
 import { GiCarDoor } from "react-icons/gi";
 import { BsFuelPump } from "react-icons/bs";
 import { FaAnglesRight,FaAnglesLeft  } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function FleetSection() {
   const [cars, setCars] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     
@@ -22,6 +24,10 @@ export default function FleetSection() {
         console.error('Error fetching cars:', error);
       });
   }, []);
+  const handlebooking = ()=>{
+    navigate('/booking')
+
+  }
 
   return (
     <div className="bg-[#feffea] relative w-full  max-w-6xl mx-auto overflow-hidden pb-10">
@@ -56,7 +62,9 @@ export default function FleetSection() {
                 <p className="text-xl font-semibold mt-2 flex flex-col">
                   <span className="font-normal text-base">Daily rate from</span>₹ {car.pricePerHour}/hr
                 </p>
-                <button className="mt-3 px-4 py-2 bg-[#E94E3A] text-white font-bold rounded-lg">Rent Now</button>
+                <button
+                  onClick={handlebooking}
+                 className="mt-3 px-4 py-2 bg-[#E94E3A] text-white font-bold rounded-lg">Rent Now</button>
               </div>
             </div>
           ))}

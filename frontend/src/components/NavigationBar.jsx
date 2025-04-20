@@ -351,29 +351,38 @@ const NavigationBar = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6 ">
+        {/* <div className="hidden md:flex items-center gap-6 ">
           <Link className="font-sans" to="/">Home</Link>
           <Link className="font-sans" to="/cars">Cars</Link>
           <Link className="font-sans" to="/booking">Booking</Link>
           <Link className="font-sans" to="/aboutus">About Us</Link>
           <Link className="font-sans" to="/contact">Contact</Link>
-        </div>
+        </div> */}
 
         {/*  Sign In Button (Desktop) */}
         <button
-          className="hidden md:block bg-[#E94E3A] rounded-md text-white px-4 py-2"
+          className="mr-2 md:block bg-[#E94E3A] rounded-md text-white px-4 py-2"
           onClick={() => setIsAuthOpen(true)}
         >
           Log In
         </button>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-4xl" onClick={() => setIsOpen(!isOpen)}>
+        {/* <button
+              className="bg-[#E94E3A] rounded-md text-white px-4 py-2"
+              onClick={() => {
+                setIsAuthOpen(true);
+                setIsOpen(false); // Close menu
+              }}
+            >
+              Log In
+            </button> */}
+        {/* <button className="md:hidden text-4xl" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <HiX /> : <HiMenu />}
-        </button>
+        </button> */}
 
         {/* Mobile Menu */}
-        {isOpen && (
+        {/* {isOpen && (
           <motion.div
             ref={menuRef}
             initial={{ opacity: 0, y: -20 }}
@@ -389,7 +398,7 @@ const NavigationBar = () => {
             {/* <Link to="/register" onClick={() => setIsOpen(false)}>Register</Link> */}
 
             {/*  Sign In Button (Mobile) */}
-            <button
+            {/* <button
               className="bg-[#E94E3A] rounded-md text-white px-4 py-2"
               onClick={() => {
                 setIsAuthOpen(true);
@@ -399,7 +408,7 @@ const NavigationBar = () => {
               Log In
             </button>
           </motion.div>
-        )}
+        )} */} 
       </nav>
 
       {/*  Auth Modal Integration */}

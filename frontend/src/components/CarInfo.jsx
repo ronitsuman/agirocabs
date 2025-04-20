@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const CarInfo = ({ car }) => {
   return (
     <div className="flex items-center gap-4 mb-4 border p-3 rounded-lg">
