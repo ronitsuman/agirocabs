@@ -7,6 +7,8 @@ import Contact from "./Pages/Contact";
 import Register from "./Pages/Register";
 import NotificationBar from "./components/NotificationBar";
 import NavigationBar from "./components/NavigationBar";
+import 'react-toastify/ReactToastify.css'
+import {ToastContainer} from "react-toastify"
 
 // Lazy Load Components
 const Home = lazy(() => import("./Pages/Home"));
@@ -78,6 +80,16 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <>
+        <ToastContainer
+        position="top-right"       
+        autoClose={3000}           
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="colored"            
+      />
       <RouterProvider router={router} />
     </>
   );

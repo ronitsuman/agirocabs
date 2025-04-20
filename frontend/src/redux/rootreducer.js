@@ -1,3 +1,4 @@
+//rootreducer
 import { combineReducers } from "redux";
 import bookingReducer from "./bookingreducer";
 import carReducer from "./CarReducer";

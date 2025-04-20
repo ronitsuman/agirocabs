@@ -629,11 +629,11 @@ const CarBooking = () => {
                       onChange={(e) => handleBookingSubmit("dropoffLocation", e.target.value)}
                     >
                       <option value="" hidden disabled>Select Drop Location</option>
-                      <option value="Patna airport">Jayprakash International Airport Patna</option>
-                      <option value="Patna junction">Patna Junction</option>
-                      <option value="Danapur Junction">Danapur Junction</option>
-                      <option value="Patliputra station">Patliputra Railway Station</option>
-                      <option value="Boring road">Boring Road</option>
+                      <option value="Patna airport " disabled>Jayprakash International Airport Patna</option>
+                      <option value="Patna junction" disabled>Patna Junction</option>
+                      <option value="Danapur Junction" disabled>Danapur Junction</option>
+                      <option value="Patliputra station" disabled>Patliputra Railway Station</option>
+                      <option value="Boring road" disabled>Boring Road</option>
                     </select>
                   </div>
 
@@ -687,7 +687,7 @@ const CarBooking = () => {
         )}
         <StepsSection />
       </div>
-      <MovingText bgColor="bg-green-500" textColor="text-black" />
+      <MovingText bgColor="bg-black" textColor="text-green-500" />
       <Footer />
     </>
   );

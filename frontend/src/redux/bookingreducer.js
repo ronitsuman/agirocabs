@@ -1,9 +1,10 @@
+//bookinreducer
 const initialState = {
   bookingDetails: {
     pickupLocation: "",
-    dropoffLocation: "",
-    pickupDateTime: "",
-    returnDateTime: "",
+    returnLocation: "",
+    startTime: "",
+    endTime: "",
   },
 };
 

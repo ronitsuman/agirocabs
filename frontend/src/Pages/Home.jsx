@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import NotificationBar from '../components/NotificationBar';
 import NavigationBar from '../components/NavigationBar';
@@ -19,6 +19,8 @@ const Home = () => {
 
   // Transform scroll progress into width percentage
   const width = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  // scroll top 
+  const heroRef = useRef(null)
 
   return (
     <div>
@@ -31,7 +33,7 @@ const Home = () => {
       {/* Notification Panel */}
       <NotificationBar />
       
-      <div>
+      <div ref={heroRef} >
         {/* Navigation Panel */}
         <NavigationBar />
         
@@ -44,8 +46,8 @@ const Home = () => {
         <MovingText bgColor='bg-black' textColor='text-green-500'/>
       </div>
         {/* Car Listing */}
-        <div className='bg-[#feffea] mt-[-45px]'>
-        <FleetSection />
+        <div  className='bg-[#feffea] '>
+        <FleetSection scrollToHero={()=>heroRef.current?.scrollIntoView({behavior:'smooth'})} />
 
         </div>
      

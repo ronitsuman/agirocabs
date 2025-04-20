@@ -4,10 +4,12 @@ import { GiCarDoor } from "react-icons/gi";
 import { BsFuelPump } from "react-icons/bs";
 import { FaAnglesRight,FaAnglesLeft  } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 
-export default function FleetSection() {
+export default function FleetSection({scrollToHero}) {
+  
   const [cars, setCars] = useState([]);
   const navigate = useNavigate()
 
@@ -24,10 +26,10 @@ export default function FleetSection() {
         console.error('Error fetching cars:', error);
       });
   }, []);
-  const handlebooking = ()=>{
-    navigate('/booking')
-
-  }
+  const handleClick = () => {
+    toast.success(" Fill the booking Form 🚗");
+    scrollToHero(); // Scrolls to the Hero section
+  };
 
   return (
     <div className="bg-[#feffea] relative w-full  max-w-6xl mx-auto overflow-hidden pb-10">
@@ -63,7 +65,7 @@ export default function FleetSection() {
                   <span className="font-normal text-base">Daily rate from</span>₹ {car.pricePerHour}/hr
                 </p>
                 <button
-                  onClick={handlebooking}
+                  onClick={handleClick}
                  className="mt-3 px-4 py-2 bg-[#E94E3A] text-white font-bold rounded-lg">Rent Now</button>
               </div>
             </div>

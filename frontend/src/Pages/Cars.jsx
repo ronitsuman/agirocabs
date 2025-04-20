@@ -1,7 +1,7 @@
 import React from 'react'
 import CarsSection from '../components/CarSection'
 import CarList from '../components/CarList'
-import Trial from '../components/Trial'
+
 
 
 
@@ -16,7 +16,7 @@ const Cars = () => {
 
 
     </div>  
-    <Trial/>
+    
     
     
     
