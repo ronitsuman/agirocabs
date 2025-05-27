@@ -1237,7 +1237,7 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { selectCar } from "../redux/CarAction";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -1250,14 +1250,16 @@ const CarList = () => {
   const [bookingCarId, setBookingCarId] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // Booking details from Redux, updated on every render
+  
+  const location = useLocation();
+  // Booking details from Redux
   const bookingDetails = useSelector((state) => state.booking);
+  const effectiveBookingDetails = location.state || bookingDetails;
 
   // Debug: Log booking details on mount or update
   useEffect(() => {
     console.log("Redux bookingDetails updated:", bookingDetails);
-  }, [bookingDetails]); // Dependency on bookingDetails ensures re-render
+  }, [bookingDetails]);
 
   const vehicleTypes = ["Hatchback", "Sedan", "Compact SUV", "SUV", "MPV"];
 
@@ -1267,7 +1269,7 @@ const CarList = () => {
       try {
         const res = await fetch("http://localhost:8080/api/v1/cars");
         const data = await res.json();
-        console.log("Fetched cars:", data); // Debug log
+        console.log("Fetched cars:", data);
         setCars(data);
       } catch (err) {
         toast.error("Cars fetch nahi hua yr!");
@@ -1293,48 +1295,40 @@ const CarList = () => {
       : cars.filter((car) => selectedTypes.includes(car.type));
 
   // Handle car selection and booking
+
   const handleSelectCar = async (car) => {
-    console.log("handleSelectCar called for car:", car.id); // Debug log
-    console.log("Current Booking Details:", bookingDetails); // Latest state check karo
+    console.log(bookingDetails)
+    // Validate booking details
+    // if (
+    //   !bookingDetails.pickupLocation ||
+    //   !bookingDetails.returnLocation ||
+    //   !bookingDetails.startTime ||
+    //   !bookingDetails.endTime
+    // ) {
+    //   toast.warn("Pehle sabhi booking details fill karo yr!");
+    //   return;
+    // }
 
-    // Use fresh destructuring from the latest bookingDetails
-    const { pickupLocation, returnLocation, startTime, endTime } = bookingDetails || {};
-
-    // Detailed validation logging with full state
-    if (!pickupLocation || !returnLocation || !startTime || !endTime) {
-      console.log("Validation failed: Missing booking details", { 
-        pickupLocation, 
-        returnLocation, 
-        startTime, 
-        endTime, 
-        fullState: bookingDetails 
-      });
-      toast.warn("Pehele pickup aur drop details bharo yr!");
-      return;
-    }
-
-    // Ensure state is synced before proceeding (increased delay)
-    await new Promise((resolve) => setTimeout(resolve, 500)); // Increased to 500ms
-
-    dispatch(selectCar(car));
-    setBookingCarId(car.id);
+    // Create payload
     const payload = {
       carId: car.id,
-      pickupLocation,
-      returnLocation,
-      startTime,
-      endTime,
+      pickupLocation: bookingDetails.pickupLocation,
+      returnLocation: bookingDetails.returnLocation,
+      startTime: bookingDetails.startTime,
+      endTime: bookingDetails.endTime,
     };
-    console.log("first");
-    console.log("🚀 Payload sent to API:", payload);
+
+    console.log("Payload:", payload);
 
     try {
+      setBookingCarId(car.id);
       const response = await axios.post("http://localhost:8080/api/v1/bookings", payload);
       console.log("API Response:", response.data);
       toast.success("Booking ho gaya yr, badhai!");
-      setTimeout(() => navigate("/booking"), 1000);
+      dispatch(selectCar(car));
+      navigate("/booking");
     } catch (error) {
-      console.error("Booking Failed:", error.response?.data || error.message);
+      console.error("Booking Failed:", error);
       toast.error("Booking mein error aaya, phir try karo!");
     } finally {
       setBookingCarId(null);

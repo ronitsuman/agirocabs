@@ -9,6 +9,10 @@ import NotificationBar from "./components/NotificationBar";
 import NavigationBar from "./components/NavigationBar";
 import 'react-toastify/ReactToastify.css'
 import {ToastContainer} from "react-toastify"
+import TermsAndConditions from "./components/TermsAndConditions";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import PlatformTermsOfUse from "./components/PlatformTerm";
+import FeePolicy from "./components/FeePolicy";
 
 // Lazy Load Components
 const Home = lazy(() => import("./Pages/Home"));
@@ -35,6 +39,45 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/term&condition",
+    element: (
+      <Suspense fallback={<h2>Loading...</h2>}>
+       
+        <TermsAndConditions/>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/privacy&policy",
+    element: (
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <PrivacyPolicy/>
+       
+        
+      </Suspense>
+    ),
+  },
+  {
+    path: "/platformTerm",
+    element: (
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <PlatformTermsOfUse/>
+       
+        
+      </Suspense>
+    ),
+  },
+  {
+    path: "/guestPolicy",
+    element: (
+      <Suspense fallback={<h2>Loading...</h2>}>
+      <FeePolicy/>
+       
+        
+      </Suspense>
+    ),
+  },
+  {
     path: "/booking",
     element: (
       <Suspense fallback={<h2>Loading...</h2>}>
@@ -51,6 +94,16 @@ const router = createBrowserRouter([
         <NotificationBar/>
         <NavigationBar/>
         <AboutUs/>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/privacypolicy",
+    element: (
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <NotificationBar/>
+        <NavigationBar/>
+        <PrivacyPolicy/>
       </Suspense>
     ),
   },

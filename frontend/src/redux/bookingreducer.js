@@ -3,8 +3,8 @@ const initialState = {
   bookingDetails: {
     pickupLocation: "",
     returnLocation: "",
-    startTime: "",
-    endTime: "",
+    startTime: null,
+    endTime: null,
   },
 };
 

@@ -94,8 +94,11 @@ const Footer = () => {
       >
         <p>Copyright ©2025 All rights reserved | Agiro Technologies Pvt. Ltd. ❤️ AgiroCabs™</p>
         <div className="mt-2 flex justify-center space-x-4">
-          <a href="#" className="hover:bg-[#E94E3A]">Terms & Conditions</a>
-          <a href="#" className="hover:bg-[#E94E3A]">Privacy Policy</a>
+          <a href="/term&condition" target="_blank" className="hover:bg-[#E94E3A]">Terms & Conditions</a>
+          <a href="/privacy&policy"  target="_blank" className="hover:bg-[#E94E3A]">Privacy Policy</a>
+          <a href="/platformTerm"  target="_blank" className="hover:bg-[#E94E3A]">Platform Term of Use</a>
+          <a href="/guestPolicy"  target="_blank" className="hover:bg-[#E94E3A]">Guest Fee Policy </a>
+          {/* <a href="/refund policy" className="hover:bg-[#E94E3A]">Refund Policy</a> */}
         </div>
       </motion.div>
     </motion.footer>
